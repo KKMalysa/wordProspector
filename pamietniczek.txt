@@ -1,0 +1,26 @@
+to jest txt kodowany w ANSI
+nie mam pomyslu na treœæ, wiêc mo¿e krok po kroku, co tu siê wydarzy³o.
+
+1. tworze zmienn¹ mainPath i keyWord, które przechowuj¹ odpowiednio
+œcie¿kê do katalogu projektu i s³owo, które bêdzie wyszukiwane.
+
+2. tworzê klasy Scout i wordProspector. Pierwsz¹ do wyszukiwania plików, drug¹ do s³ów. (a w³aœciwie "s³owa").
+Implementuj¹ runnable, poniewa¿ bêdê operowaæ na w¹tkach
+
+3.w klasie Scout tworze zmienne 'BlockingQueue queue' i 'File mainPath', 
+bo bêdê potrzebowa³ zapisywaæ te dane.
+od razu ustawiam przypisanie do tych danych wartoœci, przyjmowanych za argumenty. #this. 
+
+4. w wordProspector potrzebujê zmiennych 'queue' i keyWord w analogicznym do powy¿szego celu.
+
+5. Œcie¿ek poszukam rekurencyjnie. (pêtl¹ for)
+Przyda siê metoda 'Search', jako parametr przyjmie œcie¿kê przes³an¹ z w¹tku.
+Przy pomocy metody '.listFiles' pozbieram œcie¿ki do plików i zapisze je w tablicy.
+Ten w¹tek skoñczony, teraz wystarczy go wystartowaæ w klasie main
+
+6.w w¹tku 'Scout' jeszczde tworzê pusty plik, ¿eby wordProspector zakoñczy³ pracê kiedy na niego trafi.
+W wordProspectorze tworzê metodkê "search4Word", która jako parametr przyjmie bie¿¹cy plik. 
+Szukanie zaœ robiê whilem tak, aby w¹tek uruchamia³ metodê "search4Word", dopóki nie trafi na pusty plik.
+jak trafi, to odk³ada go spowrotem do kolejki i koñczy pracê
+
+7. w "search4Word" wczytuje aktualny plik i poprzez pêtle while sprawdzam tak d³ugo jak ma nastepn¹ liniê, czy wystêpuje szukane s³owo i jeœli tak, to wypisuje komunikat z nazw¹ pliku i lokalizacj¹ szukanej frazy.
